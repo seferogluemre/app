@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, TextStyle, StyleSheet } from 'react-native';
-import { Colors } from '../theme/colors';
+import { Text, TextStyle, StyleSheet, StyleProp } from 'react-native';
+import { useTheme } from '../theme/colors';
 
 interface TypographyProps {
   children: React.ReactNode;
   variant?: 'h1' | 'h2' | 'body' | 'caption' | 'label';
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
   color?: string;
   numberOfLines?: number;
 }
@@ -17,6 +17,8 @@ export const Typography: React.FC<TypographyProps> = ({
   color,
   numberOfLines
 }) => {
+  const { colors } = useTheme();
+
   const getStyle = () => {
     switch (variant) {
       case 'h1': return styles.h1;
@@ -32,7 +34,7 @@ export const Typography: React.FC<TypographyProps> = ({
       numberOfLines={numberOfLines}
       style={[
         getStyle(),
-        { color: color || Colors.text.primary },
+        { color: color || colors.text.primary },
         style
       ]}
     >

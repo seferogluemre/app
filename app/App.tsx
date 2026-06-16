@@ -27,7 +27,7 @@ function MainApp() {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
       <DiscoveryScreen onSelectPlace={handleSelectPlace} />
       <BookingModal
         isVisible={isModalVisible}
@@ -51,9 +51,11 @@ export default function App() {
   }
 
   return (
-    <ToastProvider>
-      <MainApp />
-    </ToastProvider>
+    <ThemeProvider>
+      <ToastProvider>
+        <MainApp />
+      </ToastProvider>
+    </ThemeProvider>
   );
 }
 
